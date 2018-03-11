@@ -4,13 +4,15 @@
   "description": "Api using graphql",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=api-graphql nodemon --exec babel-node index.js"
+    "start": "DEBUG=api-graphql nodemon --exec babel-node index.js",
+    "db:seed": "npx babel-node ./database/seeders/index.js"
   },
   "author": "Javier Ocampo",
   "license": "MIT",
   "dependencies": {
     "apollo-server-express": "^1.3.2",
     "body-parser": "^1.18.2",
+    "casual": "^1.5.19",
     "cors": "^2.8.4",
     "debug": "^3.1.0",
     "express": "^4.16.2",
