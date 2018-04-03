@@ -11,11 +11,6 @@ const Spot = `
     price: Int!
   }
 
-  type Location {
-    lat: Float!
-    lng: Float!
-  }
-
   type SpotEdge {
     cursor: String!
     node: Spot!

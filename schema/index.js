@@ -16,6 +16,11 @@ const rootQuery = `
     endCursor: String!
     hasNextPage: Boolean!
   }
+
+  type Location {
+    lat: Float!
+    lng: Float!
+  }
 `;
 
 const schema = makeExecutableSchema({
