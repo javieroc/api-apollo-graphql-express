@@ -35,6 +35,4 @@ const SpotSchema = new Schema({
   timestamps: true,
 });
 
-const Spot = mongoose.model('Spot', SpotSchema);
-
-export default Spot;
+export default mongoose.model('Spot', SpotSchema);

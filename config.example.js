@@ -1,6 +1,2 @@
-const config = {
-  port: process.env.PORT || 3001,
-  mongoUrl: 'mongodb://mongodb/agedb',
-};
-
-module.exports = config;
+export const port = process.env.PORT || 3001;
+export const mongoUrl = process.env.MONGODB_URI || 'mongodb://mongodb/agedb';
