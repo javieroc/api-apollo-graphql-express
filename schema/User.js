@@ -9,7 +9,7 @@ const User = `
     address: String!
     city: String!
   }
-  type LoginResponse {
+  type AuthResponse {
     user: User
     token: String
     refreshToken: String
@@ -22,9 +22,9 @@ const User = `
     firstName: String!
     lastName: String!
     location: Location!
-    email: String!
     address: String!
-    city: String!
+    email: String!
+    password: String!
   }
 `;
 

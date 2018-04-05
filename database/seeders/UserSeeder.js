@@ -16,7 +16,6 @@ const UserSeeder = async () => {
     email: casual.email,
     avatar: `https://robohash.org/${casual.integer(1, 40)}`,
     address: casual.address,
-    city: casual.city,
     password: hash('secret', 10),
   }));
 
