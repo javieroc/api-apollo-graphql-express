@@ -38,7 +38,7 @@ const userResolver = {
           ...others,
           email,
           avatar,
-          password: hash(password, 10),
+          password: password ? hash(password, 10) : '',
           location: {
             type: 'Point',
             coordinates: [
