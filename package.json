@@ -4,7 +4,7 @@
   "description": "Api using graphql",
   "main": "index.js",
   "scripts": {
-    "start": "DEBUG=api-graphql nodemon --exec babel-node index.js",
+    "start": "DEBUG=api-graphql* nodemon --exec babel-node index.js",
     "db:seed": "npx babel-node ./database/seeders/index.js"
   },
   "author": "Javier Ocampo",
@@ -19,8 +19,10 @@
     "express": "^4.16.2",
     "graphql": "^0.13.1",
     "graphql-tools": "^2.21.0",
+    "jsonwebtoken": "^8.2.0",
     "lodash": "^4.17.5",
-    "mongoose": "^5.0.7"
+    "mongoose": "^5.0.7",
+    "mongoose-unique-validator": "^2.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1,4 +1,5 @@
 import mongoose, { Schema } from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
 
 const UserSchema = new Schema({
   firstName: {
@@ -21,6 +22,7 @@ const UserSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   avatar: {
     type: String,
@@ -34,8 +36,12 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
+}, {
+  timestamps: true,
 });
 
 UserSchema.index({ location: '2dsphere' });
+
+UserSchema.plugin(uniqueValidator);
 
 export default mongoose.model('User', UserSchema);

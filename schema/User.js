@@ -7,21 +7,23 @@ const User = `
     email: String!
     avatar: String!
     address: String!
-    city: String!
   }
   type AuthResponse {
     user: User
     token: String
-    refreshToken: String
   }
   input LoginData {
     email: String!
     password: String!
   }
+  input InputLocation {
+    lat: Float!
+    lng: Float!
+  }
   input RegisterData {
     firstName: String!
     lastName: String!
-    location: Location!
+    location: InputLocation!
     address: String!
     email: String!
     password: String!

@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { graphqlExpress, graphiqlExpress } from 'apollo-server-express';
 import cors from 'cors';
 import schema from './schema';
+import { formatError } from './services';
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(cors('*'));
 const buildOptions = async () => (
   {
     schema,
-    formatError: error => error.originalError,
+    formatError: err => formatError(err.originalError),
   }
 );
 

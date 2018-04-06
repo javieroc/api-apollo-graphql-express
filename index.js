@@ -3,7 +3,7 @@ import Debug from 'debug';
 import { port, mongoUrl } from './config';
 import app from './app';
 
-const debug = new Debug('api-graphql');
+const debug = new Debug('api-graphql:root');
 
 mongoose.connect(mongoUrl);
 

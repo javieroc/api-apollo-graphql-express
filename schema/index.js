@@ -1,4 +1,5 @@
 import { makeExecutableSchema } from 'graphql-tools';
+import User from './User';
 import Spot from './Spot';
 import resolvers from '../resolvers';
 
@@ -21,10 +22,15 @@ const rootQuery = `
     lat: Float!
     lng: Float!
   }
+
+  type Mutation {
+    register(registerData: RegisterData!): AuthResponse
+    login(loginData: LoginData): AuthResponse
+  }
 `;
 
 const schema = makeExecutableSchema({
-  typeDefs: [rootQuery, Spot],
+  typeDefs: [rootQuery, User, Spot],
   resolvers,
 });
 
