@@ -24,7 +24,18 @@ const userResolver = {
 
       const token = await createToken(user);
       return {
-        user,
+        user: {
+          _id: user._id,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          location: {
+            lng: user.location.coordinates[0],
+            lat: user.location.coordinates[1],
+          },
+          email: user.email,
+          avatar: user.avatar,
+          address: user.address,
+        },
         token,
       };
     },
