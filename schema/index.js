@@ -11,6 +11,10 @@ const rootQuery = `
       # Amount of rows to fetch
       first: Int
     ): Places!
+
+    place(
+      id: ID!
+    ): Place!
   }
 
   type PageInfo {

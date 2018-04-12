@@ -2,7 +2,7 @@ import { Place } from '../database/models';
 
 const placeResolver = {
   Query: {
-    places: async (_, args) => {
+    places: async (parent, args) => {
       const cursor = args.cursor ? Buffer.from(args.cursor, 'base64').toString('ascii') : 'a';
       const first = args.first ? args.first : 6;
 
@@ -41,6 +41,7 @@ const placeResolver = {
         },
       };
     },
+    place: (parent, { id }) => Place.findById(id).populate('user'),
   },
 };
 
