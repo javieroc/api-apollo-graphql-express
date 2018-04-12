@@ -1,7 +1,8 @@
-const Spot = `
-  type Spot {
+const Place = `
+  type Place {
     _id: ID!
     name: String!
+    user: User!
     description: String!
     address: String!
     phone: String!
@@ -11,16 +12,21 @@ const Spot = `
     price: Int!
   }
 
-  type SpotEdge {
-    cursor: String!
-    node: Spot!
+  type Location {
+    lat: Float!
+    lng: Float!
   }
 
-  type Spots {
+  type PlaceEdge {
+    cursor: String!
+    node: Place!
+  }
+
+  type Places {
     total: Int!
-    edges: [SpotEdge]!
+    edges: [PlaceEdge]!
     pageInfo: PageInfo!
   }
 `;
 
-export default Spot;
+export default Place;

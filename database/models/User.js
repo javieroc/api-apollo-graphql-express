@@ -10,15 +10,6 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  location: {
-    type: {
-      type: String,
-      default: 'Point',
-    },
-    coordinates: {
-      type: [Number],
-    },
-  },
   email: {
     type: String,
     required: true,

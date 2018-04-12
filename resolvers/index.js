@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import userResolver from './User';
-import spotResolver from './Spot';
+import placeResolver from './Place';
 
-const resolvers = merge(userResolver, spotResolver);
+const resolvers = merge(userResolver, placeResolver);
 
 export default resolvers;

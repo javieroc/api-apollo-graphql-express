@@ -1,9 +1,13 @@
 import mongoose, { Schema } from 'mongoose';
 
-const SpotSchema = new Schema({
+const PlaceSchema = new Schema({
   name: {
     type: String,
     lowercase: true,
+  },
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
   },
   description: {
     type: String,
@@ -28,11 +32,8 @@ const SpotSchema = new Schema({
       type: Number,
     },
   },
-  price: {
-    type: Number,
-  },
 }, {
   timestamps: true,
 });
 
-export default mongoose.model('Spot', SpotSchema);
+export default mongoose.model('Place', PlaceSchema);

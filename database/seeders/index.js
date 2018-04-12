@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import SpotSeeder from './SpotSeeder';
+import PlaceSeeder from './PlaceSeeder';
 import UserSeeder from './UserSeeder';
 import { mongoUrl } from '../../config';
 
@@ -7,7 +7,7 @@ mongoose.connect(mongoUrl);
 
 const seed = async () => {
   await UserSeeder();
-  await SpotSeeder();
+  await PlaceSeeder();
 };
 
 seed().then(() => {

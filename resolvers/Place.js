@@ -1,27 +1,28 @@
-import { Spot } from '../database/models';
+import { Place } from '../database/models';
 
-const spotResolver = {
+const placeResolver = {
   Query: {
-    spots: async (_, args) => {
+    places: async (_, args) => {
       const cursor = args.cursor ? Buffer.from(args.cursor, 'base64').toString('ascii') : 'a';
       const first = args.first ? args.first : 6;
 
-      const spots = await Spot.find()
+      const places = await Place.find()
         .sort({ name: 'asc' })
         .gt('name', cursor)
-        .limit(first);
+        .limit(first)
+        .populate('user');
 
-      const edges = spots.map(spot => ({
-        cursor: Buffer.from(spot.name).toString('base64'),
-        node: spot,
+      const edges = places.map(place => ({
+        cursor: Buffer.from(place.name).toString('base64'),
+        node: place,
       }));
 
-      const total = await Spot.count();
+      const total = await Place.count();
 
       let hasNextPage = false;
-      let endCursor = spots.length > 0 ? spots[spots.length - 1].name : '';
+      let endCursor = places.length > 0 ? places[places.length - 1].name : '';
       if (endCursor) {
-        const restRows = await Spot.count()
+        const restRows = await Place.count()
           .sort({ name: 'asc' })
           .gt('name', endCursor);
 
@@ -43,4 +44,4 @@ const spotResolver = {
   },
 };
 
-export default spotResolver;
+export default placeResolver;

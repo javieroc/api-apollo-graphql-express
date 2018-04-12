@@ -1,9 +1,11 @@
 import casual from 'casual';
-import { Spot } from '../models';
+import { Place, User } from '../models';
 
-const SpotSeeder = async () => {
-  const promises = Array(10).fill().map(() => Spot.create({
+const PlaceSeeder = async () => {
+  const user = await User.findOne();
+  const promises = Array(10).fill().map(() => Place.create({
     name: casual.city,
+    user: user._id,
     description: casual.sentences(3),
     address: casual.address,
     phone: casual.phone,
@@ -17,10 +19,9 @@ const SpotSeeder = async () => {
       lat: casual.latitude,
       lng: casual.longitude,
     },
-    price: casual.integer(100, 300),
   }));
 
   await Promise.all(promises);
 };
 
-export default SpotSeeder;
+export default PlaceSeeder;
