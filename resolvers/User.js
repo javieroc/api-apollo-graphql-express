@@ -24,25 +24,14 @@ const userResolver = {
 
       const token = await createToken(user);
       return {
-        user: {
-          _id: user._id,
-          firstName: user.firstName,
-          lastName: user.lastName,
-          location: {
-            lng: user.location.coordinates[0],
-            lat: user.location.coordinates[1],
-          },
-          email: user.email,
-          avatar: user.avatar,
-          address: user.address,
-        },
+        user,
         token,
       };
     },
     register: async (parent, { registerData }) => {
       try {
         const {
-          email, password, location, ...others
+          email, password, ...others
         } = registerData;
         const avatar = `https://robohash.org/${email}/?size=200x200`;
         const user = await User.create({
@@ -50,29 +39,11 @@ const userResolver = {
           email,
           avatar,
           password: password ? hash(password, 10) : '',
-          location: {
-            type: 'Point',
-            coordinates: [
-              location.lng,
-              location.lat,
-            ],
-          },
         });
 
         const token = await createToken(user);
         return {
-          user: {
-            _id: user._id,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            location: {
-              lng: user.location.coordinates[0],
-              lat: user.location.coordinates[1],
-            },
-            email: user.email,
-            avatar: user.avatar,
-            address: user.address,
-          },
+          user,
           token,
         };
       } catch (error) {
