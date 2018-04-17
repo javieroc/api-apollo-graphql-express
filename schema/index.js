@@ -23,8 +23,8 @@ const rootQuery = `
   }
 
   type Mutation {
-    register(registerData: RegisterData!): AuthResponse
-    login(loginData: LoginData): AuthResponse
+    signup(registerData: RegisterData!): AuthResponse
+    signin(loginData: LoginData): AuthResponse
   }
 `;
 

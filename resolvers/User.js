@@ -10,7 +10,7 @@ const debug = new Debug('api-graphql:user');
 
 const userResolver = {
   Mutation: {
-    login: async (parent, { loginData }) => {
+    signin: async (parent, { loginData }) => {
       const { email, password } = loginData;
       const user = await User.findOne({ email });
 
@@ -28,7 +28,7 @@ const userResolver = {
         token,
       };
     },
-    register: async (parent, { registerData }) => {
+    signup: async (parent, { registerData }) => {
       try {
         const {
           email, password, ...others
