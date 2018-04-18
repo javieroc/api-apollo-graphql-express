@@ -6,10 +6,16 @@ const Place = `
     description: String!
     address: String!
     phone: String!
-    photos: [String!]!
+    photos: [Photo!]!
     rating: Int!
     location: Location!
     price: Int!
+  }
+
+  type Photo {
+    src: String!
+    width: Int!
+    height: Int!
   }
 
   type Location {

@@ -3,7 +3,7 @@ import { hashSync as hash } from 'bcryptjs';
 import { User } from '../models';
 
 const UserSeeder = async () => {
-  const promises = Array(20).fill().map(() => User.create({
+  const promises = Array(2).fill().map(() => User.create({
     firstName: casual.first_name,
     lastName: casual.last_name,
     email: casual.email,

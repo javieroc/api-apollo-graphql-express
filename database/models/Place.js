@@ -19,7 +19,7 @@ const PlaceSchema = new Schema({
     type: String,
   },
   photos: {
-    type: [String],
+    type: [Schema.Types.Mixed],
   },
   rating: {
     type: Number,
