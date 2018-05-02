@@ -29,7 +29,6 @@ const Place = `
   }
 
   type Places {
-    total: Int!
     edges: [PlaceEdge]!
     pageInfo: PageInfo!
   }

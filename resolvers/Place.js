@@ -3,37 +3,37 @@ import { Place } from '../database/models';
 const placeResolver = {
   Query: {
     places: async (parent, args) => {
-      const cursor = args.cursor ? Buffer.from(args.cursor, 'base64').toString('ascii') : 'a';
-      const first = args.first ? args.first : 6;
+      const { cursor } = args;
+      const first = args.first || 6;
 
-      const places = await Place.find()
-        .sort({ name: 'asc' })
-        .gt('name', cursor)
+      const options = {};
+      if (cursor) {
+        options._id = { $lt: cursor };
+      }
+
+      const places = await Place.find(options)
+        .sort({ _id: -1 })
         .limit(first)
         .populate('user');
 
       const edges = places.map(place => ({
-        cursor: Buffer.from(place.name).toString('base64'),
+        cursor: place._id,
         node: place,
       }));
 
-      const total = await Place.count();
-
       let hasNextPage = false;
-      let endCursor = places.length > 0 ? places[places.length - 1].name : '';
+      const endCursor = places.length > 0 ? places[places.length - 1]._id : '';
       if (endCursor) {
         const restRows = await Place.count()
-          .sort({ name: 'asc' })
-          .gt('name', endCursor);
+          .sort({ _id: -1 })
+          .lt('_id', endCursor);
 
-        endCursor = Buffer.from(endCursor).toString('base64');
         if (restRows > 0) {
           hasNextPage = true;
         }
       }
 
       return {
-        total,
         edges,
         pageInfo: {
           endCursor,
