@@ -10,6 +10,8 @@ const rootQuery = `
       cursor: String
       # Amount of rows to fetch
       first: Int
+      # Search by name, description or address
+      filter: String
     ): Places!
 
     place(
